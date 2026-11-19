@@ -1,4 +1,4 @@
-const CACHE = 'quizmas-2026-v2';
+const CACHE = 'quizmas-2026-v3';
 const CORE = [
   './', './index.html', './manifest.webmanifest',
   './assets/baban/mand.jpg',
@@ -13,9 +13,12 @@ const CORE = [
   './assets/baban/quiz-host.jpg',
   './assets/iceland/hallgrimskirkja.jpeg',
   './assets/iceland/blue-lagoon.jpeg',
+  './assets/iceland/rainbow-street.jpeg',
   './assets/iceland/gullfoss.jpeg',
   './assets/iceland/bloody-gate.jpeg',
-  './assets/iceland/northern-lights.jpeg'
+  './assets/iceland/northern-lights.jpeg',
+  './assets/iceland/basalt.jpeg',
+  './assets/iceland/trolls.jpeg'
 ];
 self.addEventListener('install', (event) => event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(CORE)).then(() => self.skipWaiting())));
 self.addEventListener('activate', (event) => event.waitUntil(caches.keys().then((keys) => Promise.all(keys.filter((key) => key !== CACHE).map((key) => caches.delete(key)))).then(() => self.clients.claim())));
