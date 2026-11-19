@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101015">
+  <meta name="description" content="Quizmas 2026 — a festive quiz night presentation.">
+  <title>Quizmas 2026</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
+  <style>
+    :root{color-scheme:dark;--ink:#f8f3e8;--muted:#c6bda9;--gold:#e8c779;--red:#9f1d2b;--deep:#101015;--green:#173e34;--safe:clamp(20px,5vw,76px)}
+    *{box-sizing:border-box}html,body{height:100%;margin:0}body{background:var(--deep);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;overflow:hidden;-webkit-tap-highlight-color:transparent;user-select:none}
+    button{font:inherit;color:inherit}.stage{position:relative;width:100%;height:100dvh;min-height:360px;overflow:hidden;background:radial-gradient(ellipse at 50% 42%,#263c35 0,#172b26 38%,#101015 77%)}
+    .stage:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.25;background-image:radial-gradient(#fff9 0.7px,transparent .7px);background-size:4px 4px;mask-image:linear-gradient(transparent,#000 20%,#000 80%,transparent)}
+    .glow{position:absolute;width:52vw;height:52vw;left:50%;top:38%;transform:translate(-50%,-50%);background:radial-gradient(circle,#bb8b3730,transparent 67%);pointer-events:none}
+    .slide{position:absolute;inset:0;display:grid;place-items:center;padding:var(--safe);opacity:0;visibility:hidden;transform:translateX(2.5%);transition:opacity .38s ease,transform .5s cubic-bezier(.2,.7,.15,1),visibility .38s; z-index:1}
+    .slide.active{opacity:1;visibility:visible;transform:none;z-index:2}.slide.past{transform:translateX(-2.5%)}
+    .content{width:min(100%,1120px);text-align:center;position:relative}.eyebrow{font-size:clamp(.68rem,1.2vw,.9rem);letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:0 0 1.4rem}
+    h1,h2,p{margin-top:0}.display{font-family:'Playfair Display',Georgia,serif;font-weight:600;letter-spacing:-.045em;line-height:.98;margin:0 auto;text-wrap:balance;text-shadow:0 8px 34px #0007}
+    .cover-title{font-size:clamp(4.4rem,14vw,12.5rem);line-height:.82;color:#f7ead0}.cover-title span{display:block;color:var(--gold);font-size:.48em;letter-spacing:.2em;text-transform:uppercase;margin-top:.32em}
+    .ornament{display:flex;align-items:center;justify-content:center;gap:1rem;color:var(--gold);margin:clamp(22px,5vh,52px) 0;font-size:1.15rem}.ornament:before,.ornament:after{content:"";height:1px;width:clamp(48px,10vw,140px);background:linear-gradient(90deg,transparent,var(--gold))}.ornament:after{transform:scaleX(-1)}
+    .subtitle{color:var(--muted);font-size:clamp(.9rem,1.7vw,1.25rem);letter-spacing:.12em;text-transform:uppercase}
+    .round-number{font-size:clamp(.78rem,1.3vw,1rem);letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:1.3rem}
+    .round-title{font-size:clamp(3rem,9vw,8.6rem);max-width:1000px}.round:nth-child(odd) .round-title{color:#f2e6cc}
+    .question-number{color:var(--gold);font-size:clamp(.78rem,1.3vw,1rem);letter-spacing:.25em;text-transform:uppercase;font-weight:700;margin-bottom:1.6rem}
+    .question-text{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,6vw,5.8rem);line-height:1.12;letter-spacing:-.025em;max-width:1050px;margin:auto;text-wrap:balance}
+    .answer{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,6vw,5.4rem);color:var(--gold);line-height:1.08;margin:2rem auto 0;text-wrap:balance}
+    .placeholder{font-family:'DM Sans',system-ui,sans-serif;font-size:clamp(.82rem,1.4vw,1rem);color:#d2c7b4;border:1px dashed #e8c77975;padding:1.1rem 1.4rem;border-radius:12px;max-width:620px;margin:2rem auto 0;background:#171a19a6;letter-spacing:.015em;line-height:1.5}
+    .placeholder strong{color:var(--gold);display:block;text-transform:uppercase;letter-spacing:.15em;font-size:.73rem;margin-bottom:.3rem}
+    .media-placeholder{width:min(62vw,620px);aspect-ratio:16/8;margin:2rem auto 0;border:1px dashed #e8c77975;border-radius:14px;display:grid;place-items:center;color:var(--muted);background:linear-gradient(135deg,#ffffff08,#0002);font-size:.88rem}
+    .finale{background:linear-gradient(90deg,#5d101b,#a72231 18%,#731520 32%,#a72231 50%,#731520 68%,#a72231 82%,#5d101b);box-shadow:inset 26px 0 38px #27070dcc,inset -26px 0 38px #27070dcc}
+    .finale:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,#ffffff08 0,#0002 4%,transparent 8%,#0002 12%);box-shadow:inset 0 0 110px #20040cc9}
+    .finale .content{z-index:1}.thanks{font-size:clamp(3.2rem,10vw,9rem);color:#fff0d7}.finale .ornament{color:#f3d897}
+    .topbar{position:absolute;z-index:5;left:var(--safe);right:var(--safe);top:clamp(17px,3vh,32px);display:flex;justify-content:space-between;align-items:center;pointer-events:none}.brand{font-size:.7rem;text-transform:uppercase;letter-spacing:.22em;color:#ffffff9a;font-weight:700}.counter{font-variant-numeric:tabular-nums;color:#ffffffa8;font-size:.78rem;letter-spacing:.12em}
+    .progress-track{position:absolute;z-index:6;left:0;right:0;bottom:0;height:4px;background:#ffffff18}.progress-bar{height:100%;width:0;background:var(--gold);transition:width .3s ease;box-shadow:0 0 16px #e8c77980}
+    .controls{position:absolute;z-index:7;left:var(--safe);right:var(--safe);bottom:clamp(22px,5vh,52px);display:flex;justify-content:space-between;align-items:center;pointer-events:none}.nav{pointer-events:auto;border:1px solid #ffffff34;background:#141816a8;backdrop-filter:blur(8px);width:48px;height:48px;border-radius:50%;display:grid;place-items:center;cursor:pointer;transition:background .2s,border .2s,transform .2s}.nav:hover,.nav:focus-visible{outline:none;background:#e8c77922;border-color:var(--gold);transform:scale(1.06)}.nav:disabled{opacity:.2;cursor:default;transform:none}.nav svg{width:18px;height:18px}.hint{font-size:.72rem;color:#ffffff75;letter-spacing:.08em}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(max-width:600px){.topbar{top:18px}.brand{font-size:.61rem}.controls{bottom:18px}.nav{width:44px;height:44px}.hint{font-size:.63rem}.question-text{line-height:1.08}.round-title{font-size:clamp(2.8rem,13vw,5rem)}.media-placeholder{width:86vw}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <main class="stage" id="stage" aria-label="Quizmas 2026 presentation">
+    <div class="glow" aria-hidden="true"></div>
+    <div class="topbar"><div class="brand">Quizmas 2026</div><div class="counter" id="counter" aria-live="polite"></div></div>
+    <div id="deck"></div>
+    <div class="controls" aria-label="Presentation controls">
+      <button class="nav" id="back" type="button" aria-label="Previous slide" title="Previous slide (Left arrow)"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m14.5 5-7 7 7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="hint">← → &nbsp;·&nbsp; SPACE &nbsp;·&nbsp; TAP TO MOVE</div>
+      <button class="nav" id="next" type="button" aria-label="Next slide" title="Next slide (Right arrow)"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9.5 5 7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+    <div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progress"></div></div>
+  </main>
+  <script>
+    // Replace the marked content placeholders with the locked quiz copy and local assets.
+    const rounds = [
+      { title: 'Lost in Translation', questions: [{ text: null, answer: null, note: 'Locked question wording and answer needed.' }] },
+      { title: 'Hansel & Gretel', questions: [{ text: null, answer: null, note: 'Keep the story connection concealed before question 10.' }] },
+      { title: 'Merry Quizmas', questions: [{ text: null, answer: null, note: 'Locked question wording and answer needed.' }] },
+      { title: 'The Numbers Game', questions: [{ text: null, answer: null, note: 'Locked question wording and answer needed.' }] },
+      { title: 'Guess the Baban', questions: [{ text: null, answer: null, note: 'Photo clue and locked question wording needed.' , photo: true }] },
+      { title: 'Fire and Ice', questions: [{ text: null, answer: null, note: 'Locked question wording and answer needed.' }] }
+    ];
+    const slides = [{kind:'cover'}, ...rounds.flatMap((round, r) => [
+      {kind:'round', title:round.title, round:r+1},
+      ...round.questions.flatMap((q, i) => [
+        {kind:'question', title:round.title, round:r+1, number:i+1, ...q},
+        {kind:'answer', title:round.title, round:r+1, number:i+1, ...q}
+      ])
+    ]), {kind:'finale'}];
+    const deck = document.getElementById('deck');
+    const esc = (value) => String(value).replace(/[&<>"']/g, (ch) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+    const placeholder = (note) => `<div class="placeholder"><strong>Content placeholder</strong>${esc(note)}</div>`;
+    function markup(slide){
+      if(slide.kind==='cover') return `<div class="content"><p class="eyebrow">The annual festive quiz</p><h1 class="display cover-title">Quiz<span>mas</span></h1><div class="ornament" aria-hidden="true">✦</div><p class="subtitle">2026 &nbsp;·&nbsp; Let the games begin</p></div>`;
+      if(slide.kind==='round') return `<div class="content"><p class="round-number">Round ${String(slide.round).padStart(2,'0')}</p><h2 class="display round-title">${esc(slide.title)}</h2><div class="ornament" aria-hidden="true">✦</div></div>`;
+      if(slide.kind==='finale') return `<div class="content"><p class="eyebrow">Quizmas 2026</p><h2 class="display thanks">Thanks for<br>Playing!</h2><div class="ornament" aria-hidden="true">✦</div><p class="subtitle">Merry Quizmas</p></div>`;
+      const label = `Round ${String(slide.round).padStart(2,'0')} · ${esc(slide.title)} · Question ${slide.number}`;
+      let media = slide.photo ? `<div class="media-placeholder">Photo clue placeholder · add local image</div>` : '';
+      let text = slide.text ? `<p class="question-text">${esc(slide.text)}</p>` : placeholder(slide.note);
+      let answer = slide.answer ? `<p class="answer">${esc(slide.answer)}</p>` : (slide.kind==='answer' ? placeholder('Locked answer wording needed.') : '');
+      return `<div class="content"><p class="question-number">${label}${slide.kind==='answer'?' · Answer':''}</p>${text}${media}${answer}</div>`;
+    }
+    slides.forEach((slide, index) => { const el=document.createElement('section'); el.className=`slide ${slide.kind==='round'?'round':''} ${slide.kind==='finale'?'finale':''}`;el.setAttribute('aria-label',slide.kind==='cover'?'Quizmas 2026 opening slide':slide.kind==='finale'?'Thanks for Playing':`${slide.title||'Quizmas'} ${slide.kind} slide`);el.innerHTML=markup(slide);deck.appendChild(el); });
+    const nodes=[...deck.children]; let current=0;
+    function show(index, updateHash=true){ current=Math.max(0,Math.min(nodes.length-1,index)); nodes.forEach((node,i)=>{node.classList.toggle('active',i===current);node.classList.toggle('past',i<current);node.setAttribute('aria-hidden',i===current?'false':'true');});document.getElementById('counter').textContent=`${String(current+1).padStart(2,'0')} / ${String(nodes.length).padStart(2,'0')}`;document.getElementById('progress').style.width=`${(current/(nodes.length-1))*100}%`;document.getElementById('back').disabled=current===0;document.getElementById('next').disabled=current===nodes.length-1;if(updateHash)history.replaceState(null,'',`#${current+1}`);}
+    const next=()=>show(current+1), back=()=>show(current-1);
+    document.getElementById('next').addEventListener('click',next);document.getElementById('back').addEventListener('click',back);
+    window.addEventListener('keydown',(event)=>{if(['ArrowRight','ArrowDown','PageDown',' '].includes(event.key)){event.preventDefault();next()}else if(['ArrowLeft','ArrowUp','PageUp','Backspace'].includes(event.key)){event.preventDefault();back()}else if(event.key==='Home')show(0);else if(event.key==='End')show(nodes.length-1);});
+    let touchStart=null;document.getElementById('stage').addEventListener('touchstart',e=>{touchStart=e.changedTouches[0].clientX},{passive:true});document.getElementById('stage').addEventListener('touchend',e=>{if(touchStart===null)return;const dx=e.changedTouches[0].clientX-touchStart;if(Math.abs(dx)>55){dx<0?next():back()}touchStart=null},{passive:true});
+    document.getElementById('stage').addEventListener('click',e=>{if(e.target.closest('button'))return;const x=e.clientX/window.innerWidth;if(x>.68)next();else if(x<.32)back()});
+    const hash=Number(location.hash.slice(1));show(Number.isFinite(hash)&&hash>0?hash-1:0,false);
+    if('serviceWorker' in navigator && location.protocol!=='file:') window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+  </script>
+</body>
+</html>
