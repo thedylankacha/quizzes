@@ -19,6 +19,6 @@ The slide counter and progress bar show the current position. `?` isn't needed: 
 
 The approved questions and answers are in `index.html`. Each round presents all its questions first, followed by the answer reveals. Round 5 follows the supplied photo order and reveals the corresponding names in the answer section.
 
-The 10 childhood photos for **Guess the Baban** and Iceland trip photos for **Fire and Ice** still need to be supplied and added as local files. Match the Baban photos to the answer names in the order shown in the brief; filenames can use the names and ordering you choose when supplying them. Do not use a photo of the quiz host in Fire and Ice.
+The 10 childhood photos for **Guess the Baban** are in `assets/baban/`, named for each answer and mapped in the supplied order. Iceland photos received so far are in `assets/iceland/`: Blue Lagoon (Question 2), Northern Lights (Question 3), Hallgrímskirkja (Question 5), Gullfoss (Question 8), and Bloody Gate (Question 9). Add the remaining Iceland photos using the clue names in the brief. Do not use a photo of the quiz host in Fire and Ice.
 
 The first nine Hansel & Gretel questions are shown without a connection hint; Question 10 asks what connects their answers.
