@@ -32,7 +32,10 @@
     .options li.correct{border-color:var(--gold);background:#e8c77922;color:var(--gold);box-shadow:0 0 24px #e8c77920}
     .placeholder{font-family:'DM Sans',system-ui,sans-serif;font-size:clamp(.82rem,1.4vw,1rem);color:#d2c7b4;border:1px dashed #e8c77975;padding:1.1rem 1.4rem;border-radius:12px;max-width:620px;margin:2rem auto 0;background:#171a19a6;letter-spacing:.015em;line-height:1.5}
     .placeholder strong{color:var(--gold);display:block;text-transform:uppercase;letter-spacing:.15em;font-size:.73rem;margin-bottom:.3rem}
-    .media-placeholder{width:min(62vw,620px);aspect-ratio:16/8;margin:2rem auto 0;border:1px dashed #e8c77975;border-radius:14px;display:grid;place-items:center;color:var(--muted);background:linear-gradient(135deg,#ffffff08,#0002);font-size:.88rem}
+    .photo-frame{margin:1.2rem auto 0;max-width:min(62vw,620px);height:min(58vh,720px);display:grid;place-items:center}
+    .photo-frame.context-photo{max-width:min(42vw,520px);height:min(34vh,430px);margin:.8rem auto 0}
+    .baban-photo{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:12px;box-shadow:0 18px 55px #0008}
+    .photo-answer{font-size:clamp(1.35rem,2.8vw,2.6rem);margin:.65rem auto 0}
     .finale{background:linear-gradient(90deg,#5d101b,#a72231 18%,#731520 32%,#a72231 50%,#731520 68%,#a72231 82%,#5d101b);box-shadow:inset 26px 0 38px #27070dcc,inset -26px 0 38px #27070dcc}
     .finale:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,#ffffff08 0,#0002 4%,transparent 8%,#0002 12%);box-shadow:inset 0 0 110px #20040cc9}
     .finale .content{z-index:1}.thanks{font-size:clamp(3.2rem,10vw,9rem);color:#fff0d7}.finale .ornament{color:#f3d897}
@@ -40,7 +43,7 @@
     .progress-track{position:absolute;z-index:6;left:0;right:0;bottom:0;height:4px;background:#ffffff18}.progress-bar{height:100%;width:0;background:var(--gold);transition:width .3s ease;box-shadow:0 0 16px #e8c77980}
     .controls{position:absolute;z-index:7;left:var(--safe);right:var(--safe);bottom:clamp(22px,5vh,52px);display:flex;justify-content:space-between;align-items:center;pointer-events:none}.nav{pointer-events:auto;border:1px solid #ffffff34;background:#141816a8;backdrop-filter:blur(8px);width:48px;height:48px;border-radius:50%;display:grid;place-items:center;cursor:pointer;transition:background .2s,border .2s,transform .2s}.nav:hover,.nav:focus-visible{outline:none;background:#e8c77922;border-color:var(--gold);transform:scale(1.06)}.nav:disabled{opacity:.2;cursor:default;transform:none}.nav svg{width:18px;height:18px}.hint{font-size:.72rem;color:#ffffff75;letter-spacing:.08em}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    @media(max-width:600px){.topbar{top:18px}.brand{font-size:.61rem}.controls{bottom:18px}.nav{width:44px;height:44px}.hint{font-size:.63rem}.question-text{line-height:1.08}.round-title{font-size:clamp(2.8rem,13vw,5rem)}.media-placeholder{width:86vw}}
+    @media(max-width:600px){.topbar{top:18px}.brand{font-size:.61rem}.controls{bottom:18px}.nav{width:44px;height:44px}.hint{font-size:.63rem}.question-text{line-height:1.08}.round-title{font-size:clamp(2.8rem,13vw,5rem)}.photo-frame{max-width:86vw;height:58vh}}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
   </style>
 </head>
@@ -98,21 +101,21 @@
         { text: "Following a comprehensive survey completed in 2012, what was the total measured length of the Great Wall of China, including sections built by different dynasties?", answer: "21,196.18 km." }
       ]},
       { title: "Guess the Baban", questions: [
-        { photo: true, answer: "Mand" }, { photo: true, answer: "Jess Hoar" }, { photo: true, answer: "Fraser McDougall" },
-        { photo: true, answer: "Evie Sutcliffe" }, { photo: true, answer: "Tom Taylor" }, { photo: true, answer: "Rebekah Goodchild" },
-        { photo: true, answer: "George Holding" }, { photo: true, answer: "Hannah Alcock" }, { photo: true, answer: "Leon Galli" },
-        { photo: true, answer: "Me (the quiz host)" }
+        { photo: "assets/baban/mand.jpg", answer: "Mand" }, { photo: "assets/baban/jess-hoar.jpg", answer: "Jess Hoar" }, { photo: "assets/baban/fraser-mcdougall.jpg", answer: "Fraser McDougall" },
+        { photo: "assets/baban/evie-sutcliffe.jpg", answer: "Evie Sutcliffe" }, { photo: "assets/baban/tom-taylor.jpg", answer: "Tom Taylor" }, { photo: "assets/baban/rebekah-goodchild.jpg", answer: "Rebekah Goodchild" },
+        { photo: "assets/baban/george-holding.jpg", answer: "George Holding" }, { photo: "assets/baban/hannah-alcock.jpg", answer: "Hannah Alcock" }, { photo: "assets/baban/leon-galli.jpg", answer: "Leon Galli" },
+        { photo: "assets/baban/quiz-host.jpg", answer: "Me (the quiz host)" }
       ]},
       { title: "Fire and Ice", questions: [
         { text: "Which tectonic plate are you standing on?", answer: "Hreppar Microplate." },
-        { text: "The Blue Lagoon's distinctive milky-blue colour comes from a naturally occurring compound suspended in its water. What is it?", answer: "Silica (silicon dioxide, SiO₂)." },
-        { text: "The green colour of the aurora borealis, which I witnessed in Iceland, is produced when charged solar particles interact with atoms of which atmospheric element?", answer: "Oxygen." },
+        { text: "The Blue Lagoon's distinctive milky-blue colour comes from a naturally occurring compound suspended in its water. What is it?", answer: "Silica (silicon dioxide, SiO₂).", photo: "assets/iceland/blue-lagoon.jpeg" },
+        { text: "The green colour of the aurora borealis, which I witnessed in Iceland, is produced when charged solar particles interact with atoms of which atmospheric element?", answer: "Oxygen.", photo: "assets/iceland/northern-lights.jpeg" },
         { text: "What flavouring gives Iceland's signature spirit Brennivín its distinctive taste?", answer: "Caraway." },
-        { text: "How many pipes does the enormous pipe organ inside Hallgrímskirkja contain?", answer: "5,275." },
+        { text: "How many pipes does the enormous pipe organ inside Hallgrímskirkja contain?", answer: "5,275.", photo: "assets/iceland/hallgrimskirkja.jpeg" },
         { text: "In which year was Reykjavík's famous rainbow-painted street first painted in celebration of Pride?", answer: "2015." },
         { text: "Iceland's extensive lava fields are predominantly composed of a dark, fine-grained volcanic rock. What is this rock called?", answer: "Basalt." },
-        { text: "The Gullfoss waterfall descends into its canyon in two stages. What is the total height of the waterfall?", answer: "32 metres." },
-        { text: "Þingvellir National Park in Iceland doubled as the setting for a famous fictional location in Game of Thrones. What is the name of the mountain pass leading to the Eyrie?", answer: "The Bloody Gate." },
+        { text: "The Gullfoss waterfall descends into its canyon in two stages. What is the total height of the waterfall?", answer: "32 metres.", photo: "assets/iceland/gullfoss.jpeg" },
+        { text: "Þingvellir National Park in Iceland doubled as the setting for a famous fictional location in Game of Thrones. What is the name of the mountain pass leading to the Eyrie?", answer: "The Bloody Gate.", photo: "assets/iceland/bloody-gate.jpeg" },
         { text: "Long before the first settlers arrived on Iceland's shores, the island's vast mountains, volcanic landscapes and remote wilderness were said to be inhabited by ancient, mysterious beings. Hidden from human civilisation, these creatures became deeply woven into Icelandic folklore and legend. By what name are these mythical inhabitants known?", answer: "Trolls." }
       ]}
     ];
@@ -129,10 +132,10 @@
       if(slide.kind==='round') return `<div class="content"><h2 class="display round-title">${esc(slide.title)}</h2></div>`;
       if(slide.kind==='finale') return `<div class="content"><p class="eyebrow">Quizmas 2026</p><h2 class="display thanks">Thanks for<br>Playing!</h2><div class="ornament" aria-hidden="true">✦</div><p class="subtitle">Merry Quizmas</p></div>`;
       const label = `Round ${String(slide.round).padStart(2,'0')} · ${esc(slide.title)} · Question ${slide.number}`;
-      let media = slide.photo ? `<div class="media-placeholder">Photo for this slide · to be added</div>` : '';
+      let media = slide.photo ? `<figure class="photo-frame${slide.text?' context-photo':''}"><img class="baban-photo" src="${esc(slide.photo)}" alt="${slide.title==='Guess the Baban'?'Childhood photo clue':'Iceland photo clue'}"></figure>` : '';
       let text = slide.text ? `<p class="question-text${slide.text.length>150?' long':''}">${esc(slide.text)}</p>` : '';
       let options = slide.options ? `<ul class="options">${slide.options.map(option => `<li class="${slide.kind==='answer'&&option===slide.answer?'correct':''}">${esc(option)}</li>`).join('')}</ul>` : '';
-      let answer = slide.kind==='answer' ? `<p class="answer">${esc(slide.answer)}</p>` : '';
+      let answer = slide.kind==='answer' ? `<p class="answer${slide.photo?' photo-answer':''}">${esc(slide.answer)}</p>` : '';
       return `<div class="content"><p class="question-number">${label}${slide.kind==='answer'?' · Answer':''}</p>${text}${options}${media}${answer}</div>`;
     }
     slides.forEach((slide, index) => { const el=document.createElement('section'); el.className=`slide ${slide.kind==='round'?'round':''} ${slide.kind==='finale'?'finale':''}`;el.setAttribute('aria-label',slide.kind==='cover'?'Quizmas 2026 opening slide':slide.kind==='finale'?'Thanks for Playing':`${slide.title||'Quizmas'} ${slide.kind} slide`);el.innerHTML=markup(slide);deck.appendChild(el); });
