@@ -107,16 +107,16 @@
         { photo: "assets/baban/quiz-host.jpg", answer: "Me (the quiz host)" }
       ]},
       { title: "Fire and Ice", questions: [
-        { text: "Which tectonic plate are you standing on?", answer: "Hreppar Microplate." },
+        { text: "Which tectonic plate are you standing on?", answer: "Hreppar Microplate.", photoPlaceholder: "Hreppar photo coming soon." },
         { text: "The Blue Lagoon's distinctive milky-blue colour comes from a naturally occurring compound suspended in its water. What is it?", answer: "Silica (silicon dioxide, SiO₂).", photo: "assets/iceland/blue-lagoon.jpeg" },
         { text: "The green colour of the aurora borealis, which I witnessed in Iceland, is produced when charged solar particles interact with atoms of which atmospheric element?", answer: "Oxygen.", photo: "assets/iceland/northern-lights.jpeg" },
-        { text: "What flavouring gives Iceland's signature spirit Brennivín its distinctive taste?", answer: "Caraway." },
+        { text: "What flavouring gives Iceland's signature spirit Brennivín its distinctive taste?", answer: "Caraway.", photoPlaceholder: "Brennivín bottle photo coming soon." },
         { text: "How many pipes does the enormous pipe organ inside Hallgrímskirkja contain?", answer: "5,275.", photo: "assets/iceland/hallgrimskirkja.jpeg" },
         { text: "In which year was Reykjavík's famous rainbow-painted street first painted in celebration of Pride?", answer: "2015.", photo: "assets/iceland/rainbow-street.jpeg" },
-        { text: "Iceland's extensive lava fields are predominantly composed of a dark, fine-grained volcanic rock. What is this rock called?", answer: "Basalt." },
+        { text: "Iceland's extensive lava fields are predominantly composed of a dark, fine-grained volcanic rock. What is this rock called?", answer: "Basalt.", photo: "assets/iceland/basalt.jpeg" },
         { text: "The Gullfoss waterfall descends into its canyon in two stages. What is the total height of the waterfall?", answer: "32 metres.", photo: "assets/iceland/gullfoss.jpeg" },
         { text: "Þingvellir National Park in Iceland doubled as the setting for a famous fictional location in Game of Thrones. What is the name of the mountain pass leading to the Eyrie?", answer: "The Bloody Gate.", photo: "assets/iceland/bloody-gate.jpeg" },
-        { text: "Long before the first settlers arrived on Iceland's shores, the island's vast mountains, volcanic landscapes and remote wilderness were said to be inhabited by ancient, mysterious beings. Hidden from human civilisation, these creatures became deeply woven into Icelandic folklore and legend. By what name are these mythical inhabitants known?", answer: "Trolls." }
+        { text: "Long before the first settlers arrived on Iceland's shores, the island's vast mountains, volcanic landscapes and remote wilderness were said to be inhabited by ancient, mysterious beings. Hidden from human civilisation, these creatures became deeply woven into Icelandic folklore and legend. By what name are these mythical inhabitants known?", answer: "Trolls.", photo: "assets/iceland/trolls.jpeg", answerPhotoOnly: true }
       ]}
     ];
     const slides = [{kind:'cover'}, ...rounds.flatMap((round, r) => [
@@ -126,13 +126,14 @@
     ]), {kind:'finale'}];
     const deck = document.getElementById('deck');
     const esc = (value) => String(value).replace(/[&<>"']/g, (ch) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
-    const placeholder = (note) => `<div class="placeholder"><strong>Content placeholder</strong>${esc(note)}</div>`;
+    const placeholder = (note) => `<div class="placeholder"><strong>Photo placeholder</strong>${esc(note)}</div>`;
     function markup(slide){
       if(slide.kind==='cover') return `<div class="content"><p class="eyebrow">The annual festive quiz</p><h1 class="display cover-title">Quiz<span>mas</span></h1><div class="ornament" aria-hidden="true">✦</div><p class="subtitle">2026 &nbsp;·&nbsp; Let the games begin</p></div>`;
       if(slide.kind==='round') return `<div class="content"><h2 class="display round-title">${esc(slide.title)}</h2></div>`;
       if(slide.kind==='finale') return `<div class="content"><p class="eyebrow">Quizmas 2026</p><h2 class="display thanks">Thanks for<br>Playing!</h2><div class="ornament" aria-hidden="true">✦</div><p class="subtitle">Merry Quizmas</p></div>`;
       const label = `Round ${String(slide.round).padStart(2,'0')} · ${esc(slide.title)} · Question ${slide.number}`;
-      let media = slide.photo ? `<figure class="photo-frame${slide.text?' context-photo':''}"><img class="baban-photo" src="${esc(slide.photo)}" alt="${slide.title==='Guess the Baban'?'Childhood photo clue':'Iceland photo clue'}"></figure>` : '';
+      const showPhoto = slide.photo && (!slide.answerPhotoOnly || slide.kind==='answer');
+      let media = showPhoto ? `<figure class="photo-frame${slide.text?' context-photo':''}"><img class="baban-photo" src="${esc(slide.photo)}" alt="${slide.title==='Guess the Baban'?'Childhood photo clue':'Iceland photo clue'}"></figure>` : (slide.photoPlaceholder ? placeholder(slide.photoPlaceholder) : '');
       let text = slide.text ? `<p class="question-text${slide.text.length>150?' long':''}">${esc(slide.text)}</p>` : '';
       let options = slide.options ? `<ul class="options">${slide.options.map(option => `<li class="${slide.kind==='answer'&&option===slide.answer?'correct':''}">${esc(option)}</li>`).join('')}</ul>` : '';
       let answer = slide.kind==='answer' ? `<p class="answer${slide.photo?' photo-answer':''}">${esc(slide.answer)}</p>` : '';
