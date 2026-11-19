@@ -17,7 +17,7 @@ The slide counter and progress bar show the current position. `?` isn't needed: 
 
 ## Quiz content and photos
 
-The approved questions and answers are in `index.html`. Each round presents all its questions first, followed by the answer reveals. Round 5 follows the supplied photo order and reveals the corresponding names in the answer section.
+The approved questions and answers are in `index.html`. Each round presents all its questions first, then an **Answers** divider. In the answer section, each question appears before its reveal slide, where the same question remains visible with the answer.
 
 The 10 childhood photos for **Guess the Baban** are in `assets/baban/`, with each filename now matching the person pictured and each answer slide using the corresponding photo. Iceland photos received so far are in `assets/iceland/`: Blue Lagoon (Question 2), Northern Lights (Question 3), Hallgrímskirkja (Question 5), Rainbow Street (Question 6), Basalt (Question 7), Gullfoss (Question 8), Bloody Gate (Question 9), and Trolls (Question 10 answer reveal only). The Rainbow Street photo includes the quiz host, as approved. Hreppar (Question 1) and Brennivín (Question 4) show placeholders while their photos are pending.
 

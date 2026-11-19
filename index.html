@@ -16,26 +16,28 @@
     .glow{position:absolute;width:52vw;height:52vw;left:50%;top:38%;transform:translate(-50%,-50%);background:radial-gradient(circle,#bb8b3730,transparent 67%);pointer-events:none}
     .slide{position:absolute;inset:0;display:grid;place-items:center;padding:var(--safe);opacity:0;visibility:hidden;transform:translateX(2.5%);transition:opacity .38s ease,transform .5s cubic-bezier(.2,.7,.15,1),visibility .38s; z-index:1}
     .slide.active{opacity:1;visibility:visible;transform:none;z-index:2}.slide.past{transform:translateX(-2.5%)}
-    .content{width:min(100%,1120px);text-align:center;position:relative}.eyebrow{font-size:clamp(.68rem,1.2vw,.9rem);letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:0 0 1.4rem}
+    .content{width:min(100%,1220px);text-align:center;position:relative}.content.quiz-content{height:100%;display:grid;grid-template-rows:auto minmax(0,1fr);gap:clamp(1rem,2vh,1.5rem)}.eyebrow{font-size:clamp(.68rem,1.2vw,.9rem);letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:0 0 1.4rem}
     h1,h2,p{margin-top:0}.display{font-family:'Playfair Display',Georgia,serif;font-weight:600;letter-spacing:-.045em;line-height:.98;margin:0 auto;text-wrap:balance;text-shadow:0 8px 34px #0007}
     .cover-title{font-size:clamp(4.4rem,14vw,12.5rem);line-height:.82;color:#f7ead0}.cover-title span{display:block;color:var(--gold);font-size:.48em;letter-spacing:.2em;text-transform:uppercase;margin-top:.32em}
     .ornament{display:flex;align-items:center;justify-content:center;gap:1rem;color:var(--gold);margin:clamp(22px,5vh,52px) 0;font-size:1.15rem}.ornament:before,.ornament:after{content:"";height:1px;width:clamp(48px,10vw,140px);background:linear-gradient(90deg,transparent,var(--gold))}.ornament:after{transform:scaleX(-1)}
     .subtitle{color:var(--muted);font-size:clamp(.9rem,1.7vw,1.25rem);letter-spacing:.12em;text-transform:uppercase}
     .round-number{font-size:clamp(.78rem,1.3vw,1rem);letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:1.3rem}
     .round-title{font-size:clamp(3rem,9vw,8.6rem);max-width:1000px}.round:nth-child(odd) .round-title{color:#f2e6cc}
-    .question-number{color:var(--gold);font-size:clamp(.78rem,1.3vw,1rem);letter-spacing:.25em;text-transform:uppercase;font-weight:700;margin-bottom:1.6rem}
-    .question-text{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,6vw,5.8rem);line-height:1.12;letter-spacing:-.025em;max-width:1050px;margin:auto;text-wrap:balance}
-    .question-text.long{font-size:clamp(1.2rem,2.5vw,2.8rem);line-height:1.2;letter-spacing:-.01em}
-    .answer{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,6vw,5.4rem);color:var(--gold);line-height:1.08;margin:2rem auto 0;text-wrap:balance}
+    .answers-divider .content{display:grid;align-content:center;gap:1.2rem}.answers-divider .round-title{color:var(--gold)}.answers-divider .subtitle{margin:0}
+    .question-number{color:var(--gold);font-size:clamp(.78rem,1.3vw,1rem);letter-spacing:.25em;text-transform:uppercase;font-weight:700;margin:0;text-align:left}
+    .slide-body{min-height:0;width:100%;display:grid;grid-template-columns:minmax(0,1fr);align-items:center;justify-items:stretch}
+    .slide-body.with-media{grid-template-columns:minmax(0,1fr) minmax(0,min(34vw,410px));gap:clamp(1.4rem,4vw,3.5rem)}
+    .slide-copy{min-width:0;width:100%;max-height:100%;padding-top:clamp(.8rem,3vh,2rem);display:flex;flex-direction:column;justify-content:flex-start;align-items:center}
+    .question-text{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.45rem,2.6vw,2.4rem);line-height:1.25;letter-spacing:-.012em;max-width:100%;margin:0;text-wrap:balance}
+    .answer{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.45rem,2.6vw,2.4rem);color:var(--gold);line-height:1.2;margin:clamp(1rem,3vh,2rem) 0 0;text-wrap:balance}
     .options{list-style:none;padding:0;margin:clamp(1.2rem,3vh,2rem) auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:.55rem;max-width:900px;text-align:left}
     .options li{border:1px solid #e8c77945;background:#171a1966;border-radius:9px;padding:.55rem .9rem;color:#f1eadb;font-size:clamp(.95rem,1.7vw,1.35rem);line-height:1.25}
     .options li.correct{border-color:var(--gold);background:#e8c77922;color:var(--gold);box-shadow:0 0 24px #e8c77920}
-    .placeholder{font-family:'DM Sans',system-ui,sans-serif;font-size:clamp(.82rem,1.4vw,1rem);color:#d2c7b4;border:1px dashed #e8c77975;padding:1.1rem 1.4rem;border-radius:12px;max-width:620px;margin:2rem auto 0;background:#171a19a6;letter-spacing:.015em;line-height:1.5}
+    .placeholder{font-family:'DM Sans',system-ui,sans-serif;font-size:clamp(.82rem,1.4vw,1rem);color:#d2c7b4;border:1px dashed #e8c77975;padding:1.1rem 1.4rem;border-radius:12px;width:100%;background:#171a19a6;letter-spacing:.015em;line-height:1.5}
     .placeholder strong{color:var(--gold);display:block;text-transform:uppercase;letter-spacing:.15em;font-size:.73rem;margin-bottom:.3rem}
-    .photo-frame{margin:1.2rem auto 0;max-width:min(62vw,620px);height:min(58vh,720px);display:grid;place-items:center}
-    .photo-frame.context-photo{max-width:min(42vw,520px);height:min(34vh,430px);margin:.8rem auto 0}
-    .baban-photo{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:12px;box-shadow:0 18px 55px #0008}
-    .photo-answer{font-size:clamp(1.35rem,2.8vw,2.6rem);margin:.65rem auto 0}
+    .media-slot{width:100%;height:100%;min-width:0;min-height:0;display:grid;place-items:center}.media-slot.reserved{visibility:hidden}
+    .photo-frame{width:100%;height:100%;min-height:0;margin:0;display:grid;place-items:center}
+    .baban-photo{display:block;max-width:100%;max-height:min(100%,62vh,680px);width:auto;height:auto;object-fit:contain;border-radius:12px;box-shadow:0 18px 55px #0008}
     .finale{background:linear-gradient(90deg,#5d101b,#a72231 18%,#731520 32%,#a72231 50%,#731520 68%,#a72231 82%,#5d101b);box-shadow:inset 26px 0 38px #27070dcc,inset -26px 0 38px #27070dcc}
     .finale:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,#ffffff08 0,#0002 4%,transparent 8%,#0002 12%);box-shadow:inset 0 0 110px #20040cc9}
     .finale .content{z-index:1}.thanks{font-size:clamp(3.2rem,10vw,9rem);color:#fff0d7}.finale .ornament{color:#f3d897}
@@ -43,7 +45,7 @@
     .progress-track{position:absolute;z-index:6;left:0;right:0;bottom:0;height:4px;background:#ffffff18}.progress-bar{height:100%;width:0;background:var(--gold);transition:width .3s ease;box-shadow:0 0 16px #e8c77980}
     .controls{position:absolute;z-index:7;left:var(--safe);right:var(--safe);bottom:clamp(22px,5vh,52px);display:flex;justify-content:space-between;align-items:center;pointer-events:none}.nav{pointer-events:auto;border:1px solid #ffffff34;background:#141816a8;backdrop-filter:blur(8px);width:48px;height:48px;border-radius:50%;display:grid;place-items:center;cursor:pointer;transition:background .2s,border .2s,transform .2s}.nav:hover,.nav:focus-visible{outline:none;background:#e8c77922;border-color:var(--gold);transform:scale(1.06)}.nav:disabled{opacity:.2;cursor:default;transform:none}.nav svg{width:18px;height:18px}.hint{font-size:.72rem;color:#ffffff75;letter-spacing:.08em}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    @media(max-width:600px){.topbar{top:18px}.brand{font-size:.61rem}.controls{bottom:18px}.nav{width:44px;height:44px}.hint{font-size:.63rem}.question-text{line-height:1.08}.round-title{font-size:clamp(2.8rem,13vw,5rem)}.photo-frame{max-width:86vw;height:58vh}}
+    @media(max-width:680px){.topbar{top:18px}.brand{font-size:.61rem}.controls{bottom:18px}.nav{width:44px;height:44px}.hint{font-size:.63rem}.round-title{font-size:clamp(2.8rem,13vw,5rem)}.content.quiz-content{gap:.8rem}.slide-body.with-media{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) minmax(0,min(24vh,210px));gap:.7rem}.slide-copy{padding-top:.4rem}.question-text,.answer{font-size:clamp(1.05rem,4.2vw,1.45rem);line-height:1.2}.answer{margin-top:.7rem}.question-number{font-size:.68rem;letter-spacing:.16em}.baban-photo{max-height:100%}.placeholder{padding:.8rem 1rem}}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
   </style>
 </head>
@@ -122,7 +124,11 @@
     const slides = [{kind:'cover'}, ...rounds.flatMap((round, r) => [
       {kind:'round', title:round.title, round:r+1},
       ...round.questions.map((q, i) => ({kind:'question', title:round.title, round:r+1, number:i+1, ...q})),
-      ...round.questions.map((q, i) => ({kind:'answer', title:round.title, round:r+1, number:i+1, ...q}))
+      {kind:'answers', title:round.title, round:r+1},
+      ...round.questions.flatMap((q, i) => [
+        {kind:'answer-question', title:round.title, round:r+1, number:i+1, ...q},
+        {kind:'answer', title:round.title, round:r+1, number:i+1, ...q}
+      ])
     ]), {kind:'finale'}];
     const deck = document.getElementById('deck');
     const esc = (value) => String(value).replace(/[&<>"']/g, (ch) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
@@ -130,16 +136,22 @@
     function markup(slide){
       if(slide.kind==='cover') return `<div class="content"><p class="eyebrow">The annual festive quiz</p><h1 class="display cover-title">Quiz<span>mas</span></h1><div class="ornament" aria-hidden="true">✦</div><p class="subtitle">2026 &nbsp;·&nbsp; Let the games begin</p></div>`;
       if(slide.kind==='round') return `<div class="content"><h2 class="display round-title">${esc(slide.title)}</h2></div>`;
+      if(slide.kind==='answers') return `<div class="content"><p class="eyebrow">Round ${String(slide.round).padStart(2,'0')}</p><h2 class="display round-title">Answers</h2><p class="subtitle">${esc(slide.title)}</p></div>`;
       if(slide.kind==='finale') return `<div class="content"><p class="eyebrow">Quizmas 2026</p><h2 class="display thanks">Thanks for<br>Playing!</h2><div class="ornament" aria-hidden="true">✦</div><p class="subtitle">Merry Quizmas</p></div>`;
       const label = `Round ${String(slide.round).padStart(2,'0')} · ${esc(slide.title)} · Question ${slide.number}`;
-      const showPhoto = slide.photo && (!slide.answerPhotoOnly || slide.kind==='answer');
-      let media = showPhoto ? `<figure class="photo-frame${slide.text?' context-photo':''}"><img class="baban-photo" src="${esc(slide.photo)}" alt="${slide.title==='Guess the Baban'?'Childhood photo clue':'Iceland photo clue'}"></figure>` : (slide.photoPlaceholder ? placeholder(slide.photoPlaceholder) : '');
-      let text = slide.text ? `<p class="question-text${slide.text.length>150?' long':''}">${esc(slide.text)}</p>` : '';
-      let options = slide.options ? `<ul class="options">${slide.options.map(option => `<li class="${slide.kind==='answer'&&option===slide.answer?'correct':''}">${esc(option)}</li>`).join('')}</ul>` : '';
-      let answer = slide.kind==='answer' ? `<p class="answer${slide.photo?' photo-answer':''}">${esc(slide.answer)}</p>` : '';
-      return `<div class="content"><p class="question-number">${label}${slide.kind==='answer'?' · Answer':''}</p>${text}${options}${media}${answer}</div>`;
+      const reveal = slide.kind==='answer';
+      const showPhoto = slide.photo && (!slide.answerPhotoOnly || reveal);
+      const reservePhoto = Boolean(slide.photo || slide.photoPlaceholder);
+      const media = showPhoto ? `<figure class="photo-frame"><img class="baban-photo" src="${esc(slide.photo)}" alt="${slide.title==='Guess the Baban'?'Childhood photo clue':'Iceland photo'}"></figure>` : (slide.photoPlaceholder ? placeholder(slide.photoPlaceholder) : '');
+      const prompt = slide.text || (slide.title==='Guess the Baban' ? 'Who is this?' : '');
+      const text = prompt ? `<p class="question-text">${esc(prompt)}</p>` : '';
+      const options = slide.options ? `<ul class="options">${slide.options.map(option => `<li class="${reveal&&option===slide.answer?'correct':''}">${esc(option)}</li>`).join('')}</ul>` : '';
+      const answer = reveal ? `<p class="answer">${esc(slide.answer)}</p>` : '';
+      const phase = slide.kind==='answer-question' ? ' · Question' : reveal ? ' · Answer' : '';
+      const mediaSlot = reservePhoto ? `<div class="media-slot${media?'':' reserved'}">${media}</div>` : '';
+      return `<div class="content quiz-content"><p class="question-number">${label}${phase}</p><div class="slide-body${reservePhoto?' with-media':''}"><div class="slide-copy">${text}${options}${answer}</div>${mediaSlot}</div></div>`;
     }
-    slides.forEach((slide, index) => { const el=document.createElement('section'); el.className=`slide ${slide.kind==='round'?'round':''} ${slide.kind==='finale'?'finale':''}`;el.setAttribute('aria-label',slide.kind==='cover'?'Quizmas 2026 opening slide':slide.kind==='finale'?'Thanks for Playing':`${slide.title||'Quizmas'} ${slide.kind} slide`);el.innerHTML=markup(slide);deck.appendChild(el); });
+    slides.forEach((slide, index) => { const el=document.createElement('section'); el.className=`slide ${slide.kind==='round'?'round':''} ${slide.kind==='answers'?'answers-divider':''} ${slide.kind==='finale'?'finale':''}`;el.setAttribute('aria-label',slide.kind==='cover'?'Quizmas 2026 opening slide':slide.kind==='finale'?'Thanks for Playing':`${slide.title||'Quizmas'} ${slide.kind} slide`);el.innerHTML=markup(slide);deck.appendChild(el); });
     const nodes=[...deck.children]; let current=0;
     function show(index, updateHash=true){ current=Math.max(0,Math.min(nodes.length-1,index)); nodes.forEach((node,i)=>{node.classList.toggle('active',i===current);node.classList.toggle('past',i<current);node.setAttribute('aria-hidden',i===current?'false':'true');});document.getElementById('counter').textContent=`${String(current+1).padStart(2,'0')} / ${String(nodes.length).padStart(2,'0')}`;document.getElementById('progress').style.width=`${(current/(nodes.length-1))*100}%`;document.getElementById('back').disabled=current===0;document.getElementById('next').disabled=current===nodes.length-1;if(updateHash)history.replaceState(null,'',`#${current+1}`);}
     const next=()=>show(current+1), back=()=>show(current-1);

@@ -1,4 +1,4 @@
-const CACHE = 'quizmas-2026-v3';
+const CACHE = 'quizmas-2026-v4';
 const CORE = [
   './', './index.html', './manifest.webmanifest',
   './assets/baban/mand.jpg',
