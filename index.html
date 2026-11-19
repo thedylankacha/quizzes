@@ -25,7 +25,11 @@
     .round-title{font-size:clamp(3rem,9vw,8.6rem);max-width:1000px}.round:nth-child(odd) .round-title{color:#f2e6cc}
     .question-number{color:var(--gold);font-size:clamp(.78rem,1.3vw,1rem);letter-spacing:.25em;text-transform:uppercase;font-weight:700;margin-bottom:1.6rem}
     .question-text{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,6vw,5.8rem);line-height:1.12;letter-spacing:-.025em;max-width:1050px;margin:auto;text-wrap:balance}
+    .question-text.long{font-size:clamp(1.2rem,2.5vw,2.8rem);line-height:1.2;letter-spacing:-.01em}
     .answer{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,6vw,5.4rem);color:var(--gold);line-height:1.08;margin:2rem auto 0;text-wrap:balance}
+    .options{list-style:none;padding:0;margin:clamp(1.2rem,3vh,2rem) auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:.55rem;max-width:900px;text-align:left}
+    .options li{border:1px solid #e8c77945;background:#171a1966;border-radius:9px;padding:.55rem .9rem;color:#f1eadb;font-size:clamp(.95rem,1.7vw,1.35rem);line-height:1.25}
+    .options li.correct{border-color:var(--gold);background:#e8c77922;color:var(--gold);box-shadow:0 0 24px #e8c77920}
     .placeholder{font-family:'DM Sans',system-ui,sans-serif;font-size:clamp(.82rem,1.4vw,1rem);color:#d2c7b4;border:1px dashed #e8c77975;padding:1.1rem 1.4rem;border-radius:12px;max-width:620px;margin:2rem auto 0;background:#171a19a6;letter-spacing:.015em;line-height:1.5}
     .placeholder strong{color:var(--gold);display:block;text-transform:uppercase;letter-spacing:.15em;font-size:.73rem;margin-bottom:.3rem}
     .media-placeholder{width:min(62vw,620px);aspect-ratio:16/8;margin:2rem auto 0;border:1px dashed #e8c77975;border-radius:14px;display:grid;place-items:center;color:var(--muted);background:linear-gradient(135deg,#ffffff08,#0002);font-size:.88rem}
@@ -53,34 +57,83 @@
     <div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progress"></div></div>
   </main>
   <script>
-    // Replace the marked content placeholders with the locked quiz copy and local assets.
+    // Approved Quizmas 2026 content. Question wording is kept verbatim.
     const rounds = [
-      { title: 'Lost in Translation', questions: [{ text: null, answer: null, note: 'Locked question wording and answer needed.' }] },
-      { title: 'Hansel & Gretel', questions: [{ text: null, answer: null, note: 'Keep the story connection concealed before question 10.' }] },
-      { title: 'Merry Quizmas', questions: [{ text: null, answer: null, note: 'Locked question wording and answer needed.' }] },
-      { title: 'The Numbers Game', questions: [{ text: null, answer: null, note: 'Locked question wording and answer needed.' }] },
-      { title: 'Guess the Baban', questions: [{ text: null, answer: null, note: 'Photo clue and locked question wording needed.' , photo: true }] },
-      { title: 'Fire and Ice', questions: [{ text: null, answer: null, note: 'Locked question wording and answer needed.' }] }
+      { title: "Lost in Translation", questions: [
+        { text: "Which Hawaiian word describes smooth, rope-like volcanic lava?", options: ["ʻAʻā", "Pāhoehoe", "Kīpuka", "Pele", "Pali"], answer: "Pāhoehoe" },
+        { text: "What is the Japanese word for the practice of repairing broken pottery with gold, making the damage part of its beauty?", options: ["Ikigai", "Tsundoku", "Kintsugi", "Komorebi", "Wabi-sabi"], answer: "Kintsugi" },
+        { text: "Which German word describes a longing for distant places, particularly places you've never visited?", options: ["Fernweh", "Heimweh", "Schadenfreude", "Zeitgeist", "Fingerspitzengefühl"], answer: "Fernweh" },
+        { text: "Which Swahili verb means “sleep!”?", options: ["Kula", "Lala", "Kunywa", "Cheka", "Tembea"], answer: "Lala" },
+        { text: "Four of these English words entered English via Arabic. Which one did not?", options: ["Algebra", "Alcohol", "Algorithm", "Alchemy", "Altitude"], answer: "Altitude" }
+      ]},
+      { title: "Hansel & Gretel", questions: [
+        { text: "What is the name given to the phenomenon in which a photon scatters off an electron, transferring some of its energy and changing wavelength?", answer: "Compton scattering." },
+        { text: "Who, alongside Tenzing Norgay, made the first confirmed ascent of Mount Everest in 1953?", answer: "Edmund Hillary." },
+        { text: "Which actress won the Academy Award for Best Actress for her roles in Fargo, Three Billboards Outside Ebbing, Missouri and Nomadland?", answer: "Frances McDormand." },
+        { text: "In I've Got a Brand New Combine Harvester by The Wurzels, if the protagonist had four children and bequeathed his land to them in equal shares upon his death, how much land would each child inherit, assuming the woman he is courting never married him?", answer: "Five acres." },
+        { text: "Which ancient Greek mathematician is traditionally known as the father of geometry, having written the influential mathematical treatise Elements?", answer: "Euclid." },
+        { text: "In fixed-income markets, what animal is used to describe a yield-curve movement in which government bond yields rise, whether the curve steepens or flattens?", answer: "Bear." },
+        { text: "Which town on Connecticut’s Gold Coast—home to both Sacred Heart University and its own namesake Jesuit university—shares its name with a popular mid-scale Marriott hotel brand and a famous arts centre in Croydon, South London?", answer: "Fairfield." },
+        { text: "What is the common name given to the thorny, scrambling shrubs of the genus Rubus, which produce blackberries and commonly form dense thickets in the British countryside?", answer: "Brambles." },
+        { text: "What is the name given to the orchestra comprised of students from Lincoln, Exeter and Jesus colleges?", answer: "Turl Street Orchestra." },
+        { text: "What connects the answers to the preceding nine questions?", answer: "They are all streets on which members of the group have lived." }
+      ]},
+      { title: "Merry Quizmas", questions: [
+        { text: "In Icelandic Christmas folklore, thirteen mischievous characters visit children on the thirteen nights leading up to Christmas. What are these characters collectively known as?", answer: "Yule Lads (Jólasveinar)." },
+        { text: "Which traditional Italian Christmas cake, originating in Verona, is recognisable by its tall, eight-pointed star shape and is traditionally dusted with icing sugar?", answer: "Pandoro." },
+        { text: "The first commercially produced Advent calendar is generally credited to German printer Gerhard Lang. In which year did he produce it?", answer: "1908." },
+        { text: "In July 1945, during a particularly hot summer in California, songwriter Robert Wells began writing down wintry images in an attempt to cool himself down. His collaborator Mel Tormé later turned these musings into which famous Christmas song?", answer: "The Christmas Song (Chestnuts Roasting on an Open Fire)." },
+        { text: "Which London confectioner is credited with inventing the Christmas cracker, initially selling sugared almonds wrapped in decorative paper before developing the familiar explosive mechanism?", answer: "Tom Smith." },
+        { text: "In 1939, an American department store commissioned a copywriter to create a free Christmas storybook for children. The original character he created became an enormous success, with 2.4 million copies distributed in its first year. What was the character?", answer: "Rudolph (Rudolph the Red-Nosed Reindeer)." },
+        { text: "Attracting more than two million visitors each year, with around 180 wooden stalls filling the city's historic main square, this is one of the most famous Christmas markets in the world. Its name translates roughly as ‘Christ Child Market’. In which German city is it held?", answer: "Nuremberg." },
+        { text: "On 16 December 1965, astronauts Wally Schirra and Tom Stafford interrupted a routine transmission from NASA's Gemini 6 spacecraft to report an unidentified object approaching. They then sent Mission Control a musical performance. Which song did they play?", answer: "Jingle Bells." },
+        { text: "Since 1947, a large Christmas tree has been sent to London each year as a gift of gratitude for Britain's support during the Second World War. Which country sends the tree displayed in Trafalgar Square?", answer: "Norway." },
+        { text: "On Christmas Day 1932, the British monarch delivered the first ever Royal Christmas Broadcast. Written by Rudyard Kipling and transmitted from Sandringham to listeners across the British Empire, the address began a tradition that continues to this day. Who delivered this address?", answer: "King George V." }
+      ]},
+      { title: "The Numbers Game", questions: [
+        { text: "How much did the world's largest Christmas pudding weigh?", answer: "3,280 kg." },
+        { text: "How long was the world's largest Christmas cracker?", answer: "2,484 inches (approximately 63.1 metres)." },
+        { text: "How much did Leonardo da Vinci's Salvator Mundi sell for at auction in 2017?", answer: "$450,312,500." },
+        { text: "How many minutes did the famous 2010 Wimbledon first-round match between John Isner and Nicolas Mahut last in total?", answer: "665 minutes (11 hours and 5 minutes)." },
+        { text: "Following a comprehensive survey completed in 2012, what was the total measured length of the Great Wall of China, including sections built by different dynasties?", answer: "21,196.18 km." }
+      ]},
+      { title: "Guess the Baban", questions: [
+        { photo: true, answer: "Mand" }, { photo: true, answer: "Jess Hoar" }, { photo: true, answer: "Fraser McDougall" },
+        { photo: true, answer: "Evie Sutcliffe" }, { photo: true, answer: "Tom Taylor" }, { photo: true, answer: "Rebekah Goodchild" },
+        { photo: true, answer: "George Holding" }, { photo: true, answer: "Hannah Alcock" }, { photo: true, answer: "Leon Galli" },
+        { photo: true, answer: "Me (the quiz host)" }
+      ]},
+      { title: "Fire and Ice", questions: [
+        { text: "Which tectonic plate are you standing on?", answer: "Hreppar Microplate." },
+        { text: "The Blue Lagoon's distinctive milky-blue colour comes from a naturally occurring compound suspended in its water. What is it?", answer: "Silica (silicon dioxide, SiO₂)." },
+        { text: "The green colour of the aurora borealis, which I witnessed in Iceland, is produced when charged solar particles interact with atoms of which atmospheric element?", answer: "Oxygen." },
+        { text: "What flavouring gives Iceland's signature spirit Brennivín its distinctive taste?", answer: "Caraway." },
+        { text: "How many pipes does the enormous pipe organ inside Hallgrímskirkja contain?", answer: "5,275." },
+        { text: "In which year was Reykjavík's famous rainbow-painted street first painted in celebration of Pride?", answer: "2015." },
+        { text: "Iceland's extensive lava fields are predominantly composed of a dark, fine-grained volcanic rock. What is this rock called?", answer: "Basalt." },
+        { text: "The Gullfoss waterfall descends into its canyon in two stages. What is the total height of the waterfall?", answer: "32 metres." },
+        { text: "Þingvellir National Park in Iceland doubled as the setting for a famous fictional location in Game of Thrones. What is the name of the mountain pass leading to the Eyrie?", answer: "The Bloody Gate." },
+        { text: "Long before the first settlers arrived on Iceland's shores, the island's vast mountains, volcanic landscapes and remote wilderness were said to be inhabited by ancient, mysterious beings. Hidden from human civilisation, these creatures became deeply woven into Icelandic folklore and legend. By what name are these mythical inhabitants known?", answer: "Trolls." }
+      ]}
     ];
     const slides = [{kind:'cover'}, ...rounds.flatMap((round, r) => [
       {kind:'round', title:round.title, round:r+1},
-      ...round.questions.flatMap((q, i) => [
-        {kind:'question', title:round.title, round:r+1, number:i+1, ...q},
-        {kind:'answer', title:round.title, round:r+1, number:i+1, ...q}
-      ])
+      ...round.questions.map((q, i) => ({kind:'question', title:round.title, round:r+1, number:i+1, ...q})),
+      ...round.questions.map((q, i) => ({kind:'answer', title:round.title, round:r+1, number:i+1, ...q}))
     ]), {kind:'finale'}];
     const deck = document.getElementById('deck');
     const esc = (value) => String(value).replace(/[&<>"']/g, (ch) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
     const placeholder = (note) => `<div class="placeholder"><strong>Content placeholder</strong>${esc(note)}</div>`;
     function markup(slide){
       if(slide.kind==='cover') return `<div class="content"><p class="eyebrow">The annual festive quiz</p><h1 class="display cover-title">Quiz<span>mas</span></h1><div class="ornament" aria-hidden="true">✦</div><p class="subtitle">2026 &nbsp;·&nbsp; Let the games begin</p></div>`;
-      if(slide.kind==='round') return `<div class="content"><p class="round-number">Round ${String(slide.round).padStart(2,'0')}</p><h2 class="display round-title">${esc(slide.title)}</h2><div class="ornament" aria-hidden="true">✦</div></div>`;
+      if(slide.kind==='round') return `<div class="content"><h2 class="display round-title">${esc(slide.title)}</h2></div>`;
       if(slide.kind==='finale') return `<div class="content"><p class="eyebrow">Quizmas 2026</p><h2 class="display thanks">Thanks for<br>Playing!</h2><div class="ornament" aria-hidden="true">✦</div><p class="subtitle">Merry Quizmas</p></div>`;
       const label = `Round ${String(slide.round).padStart(2,'0')} · ${esc(slide.title)} · Question ${slide.number}`;
-      let media = slide.photo ? `<div class="media-placeholder">Photo clue placeholder · add local image</div>` : '';
-      let text = slide.text ? `<p class="question-text">${esc(slide.text)}</p>` : placeholder(slide.note);
-      let answer = slide.answer ? `<p class="answer">${esc(slide.answer)}</p>` : (slide.kind==='answer' ? placeholder('Locked answer wording needed.') : '');
-      return `<div class="content"><p class="question-number">${label}${slide.kind==='answer'?' · Answer':''}</p>${text}${media}${answer}</div>`;
+      let media = slide.photo ? `<div class="media-placeholder">Photo for this slide · to be added</div>` : '';
+      let text = slide.text ? `<p class="question-text${slide.text.length>150?' long':''}">${esc(slide.text)}</p>` : '';
+      let options = slide.options ? `<ul class="options">${slide.options.map(option => `<li class="${slide.kind==='answer'&&option===slide.answer?'correct':''}">${esc(option)}</li>`).join('')}</ul>` : '';
+      let answer = slide.kind==='answer' ? `<p class="answer">${esc(slide.answer)}</p>` : '';
+      return `<div class="content"><p class="question-number">${label}${slide.kind==='answer'?' · Answer':''}</p>${text}${options}${media}${answer}</div>`;
     }
     slides.forEach((slide, index) => { const el=document.createElement('section'); el.className=`slide ${slide.kind==='round'?'round':''} ${slide.kind==='finale'?'finale':''}`;el.setAttribute('aria-label',slide.kind==='cover'?'Quizmas 2026 opening slide':slide.kind==='finale'?'Thanks for Playing':`${slide.title||'Quizmas'} ${slide.kind} slide`);el.innerHTML=markup(slide);deck.appendChild(el); });
     const nodes=[...deck.children]; let current=0;
