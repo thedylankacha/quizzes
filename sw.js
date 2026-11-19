@@ -13,6 +13,7 @@ const CORE = [
   './assets/baban/quiz-host.jpg',
   './assets/iceland/hallgrimskirkja.jpeg',
   './assets/iceland/blue-lagoon.jpeg',
+  './assets/iceland/rainbow-street.jpeg',
   './assets/iceland/gullfoss.jpeg',
   './assets/iceland/bloody-gate.jpeg',
   './assets/iceland/northern-lights.jpeg'
