@@ -15,8 +15,10 @@ Open `index.html` in a browser, or serve this folder with any static file server
 
 The slide counter and progress bar show the current position. `?` isn't needed: slide position is stored in the URL hash, such as `#4`.
 
-## Content still needed
+## Quiz content and photos
 
-The project conversation available during initial implementation contained the round names, but not the locked questions, answers, round allocations, or photos. Each round currently has one visibly marked question/answer placeholder. Replace the `rounds` data in `index.html` with the approved content and add any image files beside it, then reference them with relative paths. Keep the Hansel & Gretel connection concealed through question 9; the exact reveal copy and its approved question placement need to come from the locked quiz material.
+The approved questions and answers are in `index.html`. Each round presents all its questions first, followed by the answer reveals. Round 5 follows the supplied photo order and reveals the corresponding names in the answer section.
 
-The Baban image clue is shown as a local-photo placeholder. No external images or invented quiz copy are included.
+The 10 childhood photos for **Guess the Baban** and Iceland trip photos for **Fire and Ice** still need to be supplied and added as local files. Match the Baban photos to the answer names in the order shown in the brief; filenames can use the names and ordering you choose when supplying them. Do not use a photo of the quiz host in Fire and Ice.
+
+The first nine Hansel & Gretel questions are shown without a connection hint; Question 10 asks what connects their answers.
