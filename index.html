@@ -11,12 +11,12 @@
   <style>
     :root{color-scheme:dark;--ink:#f8f3e8;--muted:#c6bda9;--gold:#e8c779;--red:#9f1d2b;--deep:#101015;--green:#173e34;--safe:clamp(20px,5vw,76px)}
     *{box-sizing:border-box}html,body{height:100%;margin:0}body{background:var(--deep);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;overflow:hidden;-webkit-tap-highlight-color:transparent;user-select:none}
-    button{font:inherit;color:inherit}.stage{position:relative;width:100%;height:100dvh;min-height:360px;overflow:hidden;background:radial-gradient(ellipse at 50% 42%,#263c35 0,#172b26 38%,#101015 77%)}
-    .stage:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.25;background-image:radial-gradient(#fff9 0.7px,transparent .7px);background-size:4px 4px;mask-image:linear-gradient(transparent,#000 20%,#000 80%,transparent)}
+    button{font:inherit;color:inherit}.stage{position:relative;width:100%;height:100dvh;min-height:360px;overflow:hidden;background:radial-gradient(ellipse at 50% 34%,#54252b 0,#28151d 38%,#111219 73%,#090d10 100%)}
+    .stage:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.7;background-image:radial-gradient(ellipse at 8% 12%,#e4b76b20,transparent 26%),radial-gradient(ellipse at 92% 83%,#8d1d2a2b,transparent 30%),radial-gradient(circle at 16% 30%,#ffe7ad91 0 1px,transparent 2px),radial-gradient(circle at 80% 21%,#ffe7ad80 0 1px,transparent 2px),radial-gradient(circle at 71% 76%,#e8c77970 0 1px,transparent 2px),radial-gradient(circle at 31% 84%,#ffffff55 0 1px,transparent 2px)}
     .glow{position:absolute;width:52vw;height:52vw;left:50%;top:38%;transform:translate(-50%,-50%);background:radial-gradient(circle,#bb8b3730,transparent 67%);pointer-events:none}
     .slide{position:absolute;inset:0;display:grid;place-items:center;padding:var(--safe);opacity:0;visibility:hidden;transform:translateX(2.5%);transition:opacity .38s ease,transform .5s cubic-bezier(.2,.7,.15,1),visibility .38s; z-index:1}
-    .slide.active{opacity:1;visibility:visible;transform:none;z-index:2}.slide.past{transform:translateX(-2.5%)}
-    .content{width:min(100%,1220px);text-align:center;position:relative}.content.quiz-content{height:100%;display:grid;grid-template-rows:auto minmax(0,1fr);gap:clamp(1rem,2vh,1.5rem)}.eyebrow{font-size:clamp(.68rem,1.2vw,.9rem);letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:0 0 1.4rem}
+    .slide.active{opacity:1;visibility:visible;transform:none;z-index:2}.slide.past{transform:translateX(-2.5%)}.slide:before{content:"";position:absolute;inset:0;z-index:0;opacity:0;pointer-events:none;transition:opacity .35s ease}.slide[class*="scene-"]:before{opacity:1}
+    .content{width:min(100%,1220px);text-align:center;position:relative;z-index:1}.content.quiz-content{height:100%;display:grid;grid-template-rows:auto minmax(0,1fr);gap:clamp(1rem,2vh,1.5rem)}.eyebrow{font-size:clamp(.68rem,1.2vw,.9rem);letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:0 0 1.4rem}
     h1,h2,p{margin-top:0}.display{font-family:'Playfair Display',Georgia,serif;font-weight:600;letter-spacing:-.045em;line-height:.98;margin:0 auto;text-wrap:balance;text-shadow:0 8px 34px #0007}
     .cover-title{font-size:clamp(4.4rem,14vw,12.5rem);line-height:.82;color:#f7ead0}.cover-title span{display:block;color:var(--gold);font-size:.48em;letter-spacing:.2em;text-transform:uppercase;margin-top:.32em}
     .ornament{display:flex;align-items:center;justify-content:center;gap:1rem;color:var(--gold);margin:clamp(22px,5vh,52px) 0;font-size:1.15rem}.ornament:before,.ornament:after{content:"";height:1px;width:clamp(48px,10vw,140px);background:linear-gradient(90deg,transparent,var(--gold))}.ornament:after{transform:scaleX(-1)}
@@ -24,6 +24,14 @@
     .round-number{font-size:clamp(.78rem,1.3vw,1rem);letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:1.3rem}
     .round-title{font-size:clamp(3rem,9vw,8.6rem);max-width:1000px}.round:nth-child(odd) .round-title{color:#f2e6cc}
     .answers-divider .content{display:grid;align-content:center;gap:1.2rem}.answers-divider .round-title{color:var(--gold)}.answers-divider .subtitle{margin:0}
+    .scene-hawaii:before{background:linear-gradient(180deg,#11162270 0%,#11162255 48%,#071a23a6 100%),radial-gradient(circle at 77% 42%,#ffd88d 0 3%,#f6a96288 3.4% 7%,transparent 7.5%),linear-gradient(152deg,transparent 0 48%,#172622 48.5% 62%,transparent 62.5%),linear-gradient(180deg,transparent 0 60%,#176377 60% 76%,#0b2b3c 77%),radial-gradient(ellipse at 50% 95%,#297f7c 0,transparent 46%),linear-gradient(180deg,#d1785b 0,#6d5261 56%,#102b35 100%)}
+    .scene-japan:before{background:linear-gradient(180deg,#100f1b55,#130d1888),radial-gradient(circle at 75% 39%,#ffcf91 0 2.4%,#e64b4c 2.7% 7%,#9d263d66 7.5% 13%,transparent 13.5%),linear-gradient(180deg,transparent 0 62%,#111320 63% 100%),linear-gradient(145deg,transparent 0 51%,#29303b 51.5% 63%,transparent 63.5%),linear-gradient(180deg,#262d48 0,#9c5360 58%,#181520 100%)}
+    .scene-germany:before{background:linear-gradient(180deg,#10182955,#10151dcc),linear-gradient(145deg,transparent 0 46%,#d6e1df 46.5% 48%,#344250 48.5% 60%,transparent 60.5%),linear-gradient(215deg,transparent 0 48%,#e7ece5 48.5% 50%,#2c3c3e 50.5% 61%,transparent 61.5%),linear-gradient(180deg,transparent 0 66%,#1a493b 66.5% 100%),radial-gradient(ellipse at 50% 100%,#275b43 0,transparent 54%),linear-gradient(180deg,#182e4b 0,#a7a6a0 57%,#1b2828 100%)}
+    .scene-swahili:before{background:linear-gradient(180deg,#17122455,#1a1018a0),radial-gradient(circle at 75% 42%,#ffd77e 0 4%,#ed9b55a6 4.5% 10%,transparent 10.5%),linear-gradient(180deg,transparent 0 65%,#32251f 65.5% 70%,transparent 70.5%),linear-gradient(176deg,transparent 0 71%,#a86b3b 71.5% 79%,#60402b 79.5%),linear-gradient(180deg,#65506a 0,#d58a58 58%,#8f5837 100%)}
+    .scene-arabic:before{background:linear-gradient(180deg,#16142c55,#1c1120a6),radial-gradient(circle at 80% 30%,#f6e4bf 0 2.7%,transparent 3%),radial-gradient(circle at 81% 29%,#373047 0 2.5%,transparent 3%),linear-gradient(165deg,transparent 0 62%,#5d3a37 62.5% 69%,transparent 69.5%),linear-gradient(195deg,transparent 0 69%,#a45d3e 69.5% 77%,transparent 77.5%),linear-gradient(180deg,#31304b 0,#ca7950 58%,#241920 100%)}
+    .holiday-frame{position:absolute;inset:clamp(9px,1.4vw,18px);z-index:4;pointer-events:none;border:1px solid #e8c7799c;border-radius:18px;box-shadow:inset 0 0 0 5px #0b1415a8,inset 0 0 0 6px #e8c77936,0 0 28px #0005}
+    .holiday-frame:before,.holiday-frame:after{content:"";position:absolute;left:clamp(76px,11vw,150px);right:clamp(76px,11vw,150px);height:12px;background:radial-gradient(ellipse at 50% 100%,#286043 0 42%,transparent 46%) 0 0/22px 14px repeat-x,radial-gradient(circle at 10px 5px,#bd3540 0 2px,transparent 2.8px) 0 0/44px 14px repeat-x;opacity:.95}
+    .holiday-frame:before{top:-5px}.holiday-frame:after{bottom:-5px;transform:rotate(180deg)}
     .question-number{color:var(--gold);font-size:clamp(.78rem,1.3vw,1rem);letter-spacing:.25em;text-transform:uppercase;font-weight:700;margin:0;text-align:left}
     .slide-body{min-height:0;width:100%;display:grid;grid-template-columns:minmax(0,1fr);align-items:center;justify-items:stretch}
     .slide-body.with-media{grid-template-columns:minmax(0,1fr) minmax(0,min(34vw,410px));gap:clamp(1.4rem,4vw,3.5rem)}
@@ -52,6 +60,7 @@
 <body>
   <main class="stage" id="stage" aria-label="Quizmas 2026 presentation">
     <div class="glow" aria-hidden="true"></div>
+    <div class="holiday-frame" aria-hidden="true"></div>
     <div class="topbar"><div class="brand">Quizmas 2026</div><div class="counter" id="counter" aria-live="polite"></div></div>
     <div id="deck"></div>
     <div class="controls" aria-label="Presentation controls">
@@ -65,11 +74,11 @@
     // Approved Quizmas 2026 content. Question wording is kept verbatim.
     const rounds = [
       { title: "Lost in Translation", questions: [
-        { text: "Which Hawaiian word describes smooth, rope-like volcanic lava?", options: ["ʻAʻā", "Pāhoehoe", "Kīpuka", "Pele", "Pali"], answer: "Pāhoehoe" },
-        { text: "What is the Japanese word for the practice of repairing broken pottery with gold, making the damage part of its beauty?", options: ["Ikigai", "Tsundoku", "Kintsugi", "Komorebi", "Wabi-sabi"], answer: "Kintsugi" },
-        { text: "Which German word describes a longing for distant places, particularly places you've never visited?", options: ["Fernweh", "Heimweh", "Schadenfreude", "Zeitgeist", "Fingerspitzengefühl"], answer: "Fernweh" },
-        { text: "Which Swahili verb means “sleep!”?", options: ["Kula", "Lala", "Kunywa", "Cheka", "Tembea"], answer: "Lala" },
-        { text: "Four of these English words entered English via Arabic. Which one did not?", options: ["Algebra", "Alcohol", "Algorithm", "Alchemy", "Altitude"], answer: "Altitude" }
+        { text: "Which Hawaiian word describes smooth, rope-like volcanic lava?", options: ["ʻAʻā", "Pāhoehoe", "Kīpuka", "Pele", "Pali"], answer: "Pāhoehoe", scene: "hawaii" },
+        { text: "What is the Japanese word for the practice of repairing broken pottery with gold, making the damage part of its beauty?", options: ["Ikigai", "Tsundoku", "Kintsugi", "Komorebi", "Wabi-sabi"], answer: "Kintsugi", scene: "japan" },
+        { text: "Which German word describes a longing for distant places, particularly places you've never visited?", options: ["Fernweh", "Heimweh", "Schadenfreude", "Zeitgeist", "Fingerspitzengefühl"], answer: "Fernweh", scene: "germany" },
+        { text: "Which Swahili verb means “sleep!”?", options: ["Kula", "Lala", "Kunywa", "Cheka", "Tembea"], answer: "Lala", scene: "swahili" },
+        { text: "Four of these English words entered English via Arabic. Which one did not?", options: ["Algebra", "Alcohol", "Algorithm", "Alchemy", "Altitude"], answer: "Altitude", scene: "arabic" }
       ]},
       { title: "Hansel & Gretel", questions: [
         { text: "What is the name given to the phenomenon in which a photon scatters off an electron, transferring some of its energy and changing wavelength?", answer: "Compton scattering." },
@@ -152,7 +161,7 @@
       const copyClass = slide.options ? 'slide-copy has-options' : 'slide-copy';
       return `<div class="content quiz-content"><p class="question-number">${label}${phase}</p><div class="slide-body${reservePhoto?' with-media':''}"><div class="${copyClass}">${text}${options}${answer}</div>${mediaSlot}</div></div>`;
     }
-    slides.forEach((slide, index) => { const el=document.createElement('section'); el.className=`slide ${slide.kind==='round'?'round':''} ${slide.kind==='answers'?'answers-divider':''} ${slide.kind==='finale'?'finale':''}`;el.setAttribute('aria-label',slide.kind==='cover'?'Quizmas 2026 opening slide':slide.kind==='finale'?'Thanks for Playing':`${slide.title||'Quizmas'} ${slide.kind} slide`);el.innerHTML=markup(slide);deck.appendChild(el); });
+    slides.forEach((slide, index) => { const el=document.createElement('section'); el.className=`slide ${slide.kind==='round'?'round':''} ${slide.kind==='answers'?'answers-divider':''} ${slide.kind==='finale'?'finale':''} ${slide.scene?`scene-${slide.scene}`:''}`;el.setAttribute('aria-label',slide.kind==='cover'?'Quizmas 2026 opening slide':slide.kind==='finale'?'Thanks for Playing':`${slide.title||'Quizmas'} ${slide.kind} slide`);el.innerHTML=markup(slide);deck.appendChild(el); });
     const nodes=[...deck.children]; let current=0;
     function show(index, updateHash=true){ current=Math.max(0,Math.min(nodes.length-1,index)); nodes.forEach((node,i)=>{node.classList.toggle('active',i===current);node.classList.toggle('past',i<current);node.setAttribute('aria-hidden',i===current?'false':'true');});document.getElementById('counter').textContent=`${String(current+1).padStart(2,'0')} / ${String(nodes.length).padStart(2,'0')}`;document.getElementById('progress').style.width=`${(current/(nodes.length-1))*100}%`;document.getElementById('back').disabled=current===0;document.getElementById('next').disabled=current===nodes.length-1;if(updateHash)history.replaceState(null,'',`#${current+1}`);}
     const next=()=>show(current+1), back=()=>show(current-1);
