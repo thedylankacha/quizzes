@@ -106,7 +106,7 @@
         { text: "On Christmas Day 1932, the British monarch delivered the first ever Royal Christmas Broadcast. Written by Rudyard Kipling and transmitted from Sandringham to listeners across the British Empire, the address began a tradition that continues to this day. Who delivered this address?", answer: "King George V." }
       ]},
       { title: "Current Affairs", questions: [
-        { text: "In the recent reunion of The Real Housewives of London, Karen Loderick and Amanda Cronin got into a heated argument regarding one another's real estate holdings, which led to Karen hurling what insult which has since gone viral?", answer: "Low budget vagina, Amanda", video: "assets/current-affairs/rholdn-reunion.mov", answerVideoOnly: true },
+        { text: "In the recent reunion of The Real Housewives of London, Karen Loderick and Amanda Cronin got into a heated argument regarding one another's real estate holdings, which led to Karen hurling what insult which has since gone viral?", answer: "Low budget vagina, Amanda", video: "assets/current-affairs/rholdn-reunion.mp4", answerVideoOnly: true },
         { text: "Jensen Huang has been removed as CEO of Nvidia following the recent honeypot scandal where he is purported to have been seduced by a spy working for China's Ministry of State Security. What was this spy's name?", answer: "Alice Huang" },
         { text: "In the recent midterms, we saw Islamophobia normalised across the US, with Trump referring to one candidate as \"Mohammad Ramadan\". Who was this candidate who went on to win the Michigan Senate seat?", answer: "Abdul El-Sayed" },
         { text: "The new UK Jobs Guarantee aims to tackle unemployment in young people promising gainful employment to those ages 18-24 for how long?", answer: "Six months" },
@@ -126,7 +126,7 @@
         { photo: "assets/baban/quiz-host.jpg", answer: "Me" }
       ]},
       { title: "Fire and Ice", questions: [
-        { text: "Which tectonic plate am I standing on?", answer: "Hreppar Microplate.", video: "assets/iceland/IMG_3897.mov" },
+        { text: "Which tectonic plate am I standing on?", answer: "Hreppar Microplate.", video: "assets/iceland/hreppar.mp4" },
         { text: "The Blue Lagoon's distinctive milky-blue colour comes from a naturally occurring compound suspended in its water. What is it?", answer: "Silica (silicon dioxide, SiO₂).", photo: "assets/iceland/blue-lagoon.jpeg" },
         { text: "The green colour of the aurora borealis, which I witnessed in Iceland, is produced when charged solar particles interact with atoms of which atmospheric element?", answer: "Oxygen.", photo: "assets/iceland/northern-lights.jpeg" },
         { text: "What flavouring gives Iceland's signature spirit Brennivín its distinctive taste?", answer: "Caraway.", photoPlaceholder: "Brennivín bottle photo coming soon." },
@@ -160,7 +160,7 @@
       const showPhoto = slide.photo && (!slide.answerPhotoOnly || reveal);
       const showVideo = slide.video && (!slide.answerVideoOnly || reveal || slide.kind==='answer-question');
       const reservePhoto = Boolean(slide.photo || slide.video || slide.photoPlaceholder);
-      const media = showPhoto ? `<figure class="photo-frame"><img class="baban-photo" src="${esc(slide.photo)}" alt="${slide.title==='Guess the Baban'?'Childhood photo clue':'Iceland photo'}"></figure>` : showVideo ? `<figure class="photo-frame"><video class="quiz-video" controls playsinline preload="metadata" aria-label="${slide.title==='Current Affairs'?'Real Housewives of London reunion clip':'Hreppar location video'}"><source src="${esc(slide.video)}"></video></figure>` : (slide.photoPlaceholder ? placeholder(slide.photoPlaceholder) : '');
+      const media = showPhoto ? `<figure class="photo-frame"><img class="baban-photo" src="${esc(slide.photo)}" alt="${slide.title==='Guess the Baban'?'Childhood photo clue':'Iceland photo'}"></figure>` : showVideo ? `<figure class="photo-frame"><video class="quiz-video" controls playsinline preload="metadata" aria-label="${slide.title==='Current Affairs'?'Real Housewives of London reunion clip':'Hreppar location video'}"><source src="${esc(slide.video)}" type="video/mp4"></video></figure>` : (slide.photoPlaceholder ? placeholder(slide.photoPlaceholder) : '');
       const prompt = slide.text || (slide.title==='Guess the Baban' ? 'Who is this?' : '');
       const text = prompt ? `<p class="question-text">${esc(prompt)}</p>` : '';
       const options = slide.options ? `<ul class="options">${slide.options.map(option => `<li class="${reveal&&option===slide.answer?'correct':''}">${esc(option)}</li>`).join('')}</ul>` : '';
