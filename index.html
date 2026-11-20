@@ -46,6 +46,7 @@
     .media-slot{width:100%;height:100%;min-width:0;min-height:0;display:grid;place-items:center}.media-slot.reserved{visibility:hidden}
     .photo-frame{width:100%;height:100%;min-height:0;margin:0;display:grid;place-items:center}
     .baban-photo{display:block;max-width:100%;max-height:min(100%,62vh,680px);width:auto;height:auto;object-fit:contain;border-radius:12px;box-shadow:0 18px 55px #0008}
+    .quiz-video{display:block;width:auto;height:auto;max-width:100%;max-height:min(100%,62vh,680px);object-fit:contain;border-radius:12px;box-shadow:0 18px 55px #0008;background:#08090b}
     .finale{background:linear-gradient(90deg,#5d101b,#a72231 18%,#731520 32%,#a72231 50%,#731520 68%,#a72231 82%,#5d101b);box-shadow:inset 26px 0 38px #27070dcc,inset -26px 0 38px #27070dcc}
     .finale:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,#ffffff08 0,#0002 4%,transparent 8%,#0002 12%);box-shadow:inset 0 0 110px #20040cc9}
     .finale .content{z-index:1}.thanks{font-size:clamp(3.2rem,10vw,9rem);color:#fff0d7}.finale .ornament{color:#f3d897}
@@ -53,7 +54,7 @@
     .progress-track{position:absolute;z-index:6;left:0;right:0;bottom:0;height:4px;background:#ffffff18}.progress-bar{height:100%;width:0;background:var(--gold);transition:width .3s ease;box-shadow:0 0 16px #e8c77980}
     .controls{position:absolute;z-index:7;left:var(--safe);right:var(--safe);bottom:clamp(22px,5vh,52px);display:flex;justify-content:space-between;align-items:center;pointer-events:none}.nav{pointer-events:auto;border:1px solid #ffffff34;background:#141816a8;backdrop-filter:blur(8px);width:48px;height:48px;border-radius:50%;display:grid;place-items:center;cursor:pointer;transition:background .2s,border .2s,transform .2s}.nav:hover,.nav:focus-visible{outline:none;background:#e8c77922;border-color:var(--gold);transform:scale(1.06)}.nav:disabled{opacity:.2;cursor:default;transform:none}.nav svg{width:18px;height:18px}.hint{font-size:.72rem;color:#ffffff75;letter-spacing:.08em}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    @media(max-width:680px){.topbar{top:18px}.brand{font-size:.61rem}.controls{bottom:18px}.nav{width:44px;height:44px}.hint{font-size:.63rem}.round-title{font-size:clamp(2.8rem,13vw,5rem)}.content.quiz-content{gap:.8rem}.slide-body.with-media{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) minmax(0,min(24vh,210px));gap:.7rem}.slide-copy{padding-top:.4rem}.question-text,.answer{font-size:clamp(1.05rem,4.2vw,1.45rem);line-height:1.2}.answer{margin-top:.7rem}.question-number{font-size:.68rem;letter-spacing:.16em}.baban-photo{max-height:100%}.placeholder{padding:.8rem 1rem}}
+    @media(max-width:680px){.topbar{top:18px}.brand{font-size:.61rem}.controls{bottom:18px}.nav{width:44px;height:44px}.hint{font-size:.63rem}.round-title{font-size:clamp(2.8rem,13vw,5rem)}.content.quiz-content{gap:.8rem}.slide-body.with-media{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) minmax(0,min(24vh,210px));gap:.7rem}.slide-copy{padding-top:.4rem}.question-text,.answer{font-size:clamp(1.05rem,4.2vw,1.45rem);line-height:1.2}.answer{margin-top:.7rem}.question-number{font-size:.68rem;letter-spacing:.16em}.baban-photo,.quiz-video{max-height:100%}.placeholder{padding:.8rem 1rem}}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
   </style>
 </head>
@@ -105,7 +106,7 @@
         { text: "On Christmas Day 1932, the British monarch delivered the first ever Royal Christmas Broadcast. Written by Rudyard Kipling and transmitted from Sandringham to listeners across the British Empire, the address began a tradition that continues to this day. Who delivered this address?", answer: "King George V." }
       ]},
       { title: "Current Affairs", questions: [
-        { text: "In the recent reunion of The Real Housewives of London, Karen Loderick and Amanda Cronin got into a heated argument regarding one another's real estate holdings, which led to Karen hurling what insult which has since gone viral?", answer: "Low budget vagina, Amanda" },
+        { text: "In the recent reunion of The Real Housewives of London, Karen Loderick and Amanda Cronin got into a heated argument regarding one another's real estate holdings, which led to Karen hurling what insult which has since gone viral?", answer: "Low budget vagina, Amanda", video: "assets/current-affairs/rholdn-reunion.mov", answerVideoOnly: true },
         { text: "Jensen Huang has been removed as CEO of Nvidia following the recent honeypot scandal where he is purported to have been seduced by a spy working for China's Ministry of State Security. What was this spy's name?", answer: "Alice Huang" },
         { text: "In the recent midterms, we saw Islamophobia normalised across the US, with Trump referring to one candidate as \"Mohammad Ramadan\". Who was this candidate who went on to win the Michigan Senate seat?", answer: "Abdul El-Sayed" },
         { text: "The new UK Jobs Guarantee aims to tackle unemployment in young people promising gainful employment to those ages 18-24 for how long?", answer: "Six months" },
@@ -125,7 +126,7 @@
         { photo: "assets/baban/quiz-host.jpg", answer: "Me" }
       ]},
       { title: "Fire and Ice", questions: [
-        { text: "Which tectonic plate am I standing on?", answer: "Hreppar Microplate.", photoPlaceholder: "Hreppar photo coming soon." },
+        { text: "Which tectonic plate am I standing on?", answer: "Hreppar Microplate.", photoPlaceholder: "Hreppar video coming soon." },
         { text: "The Blue Lagoon's distinctive milky-blue colour comes from a naturally occurring compound suspended in its water. What is it?", answer: "Silica (silicon dioxide, SiO₂).", photo: "assets/iceland/blue-lagoon.jpeg" },
         { text: "The green colour of the aurora borealis, which I witnessed in Iceland, is produced when charged solar particles interact with atoms of which atmospheric element?", answer: "Oxygen.", photo: "assets/iceland/northern-lights.jpeg" },
         { text: "What flavouring gives Iceland's signature spirit Brennivín its distinctive taste?", answer: "Caraway.", photoPlaceholder: "Brennivín bottle photo coming soon." },
@@ -157,8 +158,9 @@
       const label = `Round ${String(slide.round).padStart(2,'0')} · ${esc(slide.title)} · Question ${slide.number}`;
       const reveal = slide.kind==='answer';
       const showPhoto = slide.photo && (!slide.answerPhotoOnly || reveal);
-      const reservePhoto = Boolean(slide.photo || slide.photoPlaceholder);
-      const media = showPhoto ? `<figure class="photo-frame"><img class="baban-photo" src="${esc(slide.photo)}" alt="${slide.title==='Guess the Baban'?'Childhood photo clue':'Iceland photo'}"></figure>` : (slide.photoPlaceholder ? placeholder(slide.photoPlaceholder) : '');
+      const showVideo = slide.video && (!slide.answerVideoOnly || reveal);
+      const reservePhoto = Boolean(slide.photo || slide.video || slide.photoPlaceholder);
+      const media = showPhoto ? `<figure class="photo-frame"><img class="baban-photo" src="${esc(slide.photo)}" alt="${slide.title==='Guess the Baban'?'Childhood photo clue':'Iceland photo'}"></figure>` : showVideo ? `<figure class="photo-frame"><video class="quiz-video" controls playsinline preload="metadata" aria-label="${slide.title==='Current Affairs'?'Real Housewives of London reunion clip':'Hreppar location video'}"><source src="${esc(slide.video)}" type="video/quicktime"></video></figure>` : (slide.photoPlaceholder ? placeholder(slide.photoPlaceholder) : '');
       const prompt = slide.text || (slide.title==='Guess the Baban' ? 'Who is this?' : '');
       const text = prompt ? `<p class="question-text">${esc(prompt)}</p>` : '';
       const options = slide.options ? `<ul class="options">${slide.options.map(option => `<li class="${reveal&&option===slide.answer?'correct':''}">${esc(option)}</li>`).join('')}</ul>` : '';
