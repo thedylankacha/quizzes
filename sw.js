@@ -1,4 +1,4 @@
-const CACHE = 'quizmas-2026-v14';
+const CACHE = 'quizmas-2026-v15';
 const CORE = [
   './', './index.html', './manifest.webmanifest',
   './assets/baban/mand.jpg',
@@ -17,7 +17,7 @@ const CORE = [
   './assets/iceland/gullfoss.jpeg',
   './assets/iceland/bloody-gate.jpeg',
   './assets/iceland/northern-lights.jpeg',
-  './assets/iceland/basalt.jpeg', './assets/iceland/brennivin.png',
+  './assets/iceland/basalt.jpeg', './assets/iceland/brennivin.jpg',
   './assets/iceland/trolls.jpeg'
 ];
 self.addEventListener('install', (event) => event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(CORE)).then(() => self.skipWaiting())));
