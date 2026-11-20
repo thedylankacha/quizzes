@@ -158,9 +158,9 @@
       const label = `Round ${String(slide.round).padStart(2,'0')} · ${esc(slide.title)} · Question ${slide.number}`;
       const reveal = slide.kind==='answer';
       const showPhoto = slide.photo && (!slide.answerPhotoOnly || reveal);
-      const showVideo = slide.video && (!slide.answerVideoOnly || reveal);
+      const showVideo = slide.video && (!slide.answerVideoOnly || reveal || slide.kind==='answer-question');
       const reservePhoto = Boolean(slide.photo || slide.video || slide.photoPlaceholder);
-      const media = showPhoto ? `<figure class="photo-frame"><img class="baban-photo" src="${esc(slide.photo)}" alt="${slide.title==='Guess the Baban'?'Childhood photo clue':'Iceland photo'}"></figure>` : showVideo ? `<figure class="photo-frame"><video class="quiz-video" controls playsinline preload="metadata" aria-label="${slide.title==='Current Affairs'?'Real Housewives of London reunion clip':'Hreppar location video'}"><source src="${esc(slide.video)}" type="video/quicktime"></video></figure>` : (slide.photoPlaceholder ? placeholder(slide.photoPlaceholder) : '');
+      const media = showPhoto ? `<figure class="photo-frame"><img class="baban-photo" src="${esc(slide.photo)}" alt="${slide.title==='Guess the Baban'?'Childhood photo clue':'Iceland photo'}"></figure>` : showVideo ? `<figure class="photo-frame"><video class="quiz-video" controls playsinline preload="metadata" aria-label="${slide.title==='Current Affairs'?'Real Housewives of London reunion clip':'Hreppar location video'}"><source src="${esc(slide.video)}"></video></figure>` : (slide.photoPlaceholder ? placeholder(slide.photoPlaceholder) : '');
       const prompt = slide.text || (slide.title==='Guess the Baban' ? 'Who is this?' : '');
       const text = prompt ? `<p class="question-text">${esc(prompt)}</p>` : '';
       const options = slide.options ? `<ul class="options">${slide.options.map(option => `<li class="${reveal&&option===slide.answer?'correct':''}">${esc(option)}</li>`).join('')}</ul>` : '';
